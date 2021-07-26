@@ -1,7 +1,5 @@
 package com.imorochi;
 
-import com.imorochi.airline.DepartureAirlineAgency;
-
 import java.util.InputMismatchException;
 
 import java.util.Scanner;
@@ -36,6 +34,7 @@ public class AirportMonitorApplication {
                         flightDetails.click(flightId1);
                         System.out.println("*******************************");
                         flightDetails.display();
+                        flightDetails.clean();
                         System.out.println("*******************************");
                         System.out.println("*******************************");
                         break;
@@ -52,6 +51,7 @@ public class AirportMonitorApplication {
                         flightDetails.click(flightId2);
                         System.out.println("*******************************");
                         flightDetails.display();
+                        flightDetails.clean();
                         System.out.println("*******************************");
                         System.out.println("*******************************");
                         break;

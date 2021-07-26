@@ -61,4 +61,9 @@ public class Flight implements FlightDetails {
     public void click(int flight) {
         System.out.println("Click Flight ID: " );
     }
+
+    @Override
+    public void clean() {
+
+    }
 }

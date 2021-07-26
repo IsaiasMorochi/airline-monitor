@@ -38,6 +38,7 @@ public class FlightProxy implements FlightDetails {
     public void display() {
         if (flight != null) {
             flight.display();
+            flight = null;
         }
         System.out.println("Airline Monitor -> " );
     }
@@ -46,8 +47,10 @@ public class FlightProxy implements FlightDetails {
     public void showFlight(FlightType type) {
         this.flightType = type;
         if (type.equals(FlightType.DEPARTURE)) {
+            System.out.println("[DEPARTURES]");
             departures();
         } else if (type.equals(FlightType.ARRIVAL)) {
+            System.out.println("[ARRIVALS]");
             arrivals();
         }
     }
@@ -65,11 +68,16 @@ public class FlightProxy implements FlightDetails {
                     flight = FLIGHT_ARRIVALS.get(flightId);
                     facade.request(flight,new ArrivalAirlineAgency());
                 }
-                flight.display();
             }
         } catch (Exception e) {
             System.out.println("NOT FOUND SERVER");
         }
+    }
+
+    @Override
+    public void clean() {
+        flight = null;
+        flightType = null;
     }
 
     public void departures() {
@@ -79,7 +87,7 @@ public class FlightProxy implements FlightDetails {
     }
 
     public void arrivals() {
-        for (Map.Entry<Integer, Flight> entry : FLIGHT_DEPARTURES.entrySet()) {
+        for (Map.Entry<Integer, Flight> entry : FLIGHT_ARRIVALS.entrySet()) {
             System.out.println("ID: " + entry.getKey() + " -> " + entry.getValue());
         }
     }
